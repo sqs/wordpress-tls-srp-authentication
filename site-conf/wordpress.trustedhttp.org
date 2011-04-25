@@ -1,0 +1,33 @@
+<IfModule mod_gnutls.c>
+
+<Directory /var/www/wordpress.trustedhttp.org/>
+    Options FollowSymLinks
+    Order allow,deny
+    Allow from all
+</Directory>
+
+<VirtualHost *:80>
+    ServerName wordpress.trustedhttp.org
+    LogLevel debug
+    DocumentRoot /var/www/wordpress.trustedhttp.org/
+</VirtualHost>
+
+MaxRequestsPerChild 1
+<VirtualHost *:443>
+    ServerName wordpress.trustedhttp.org:443
+    LogLevel debug
+    DocumentRoot /var/www/wordpress.trustedhttp.org/
+
+    GnuTLSEnable on
+
+    # Only use SRP for key exchange
+    GnuTLSPriorities NONE:+AES-256-CBC:+AES-128-CBC:+SRP:+SHA1:+COMP-NULL:+VERS-TLS1.1:+VERS-TLS1.0:+VERS-SSL3.0
+
+    GnuTLSSRPPasswdFile /var/www/site-conf/wordpress.trustedhttp.org/srp.passwd
+    GnuTLSSRPPasswdConfFile /var/www/site-conf/wordpress.trustedhttp.org/srp.conf
+
+    GnuTLSCertificateFile /var/www/site-conf/wordpress.trustedhttp.org/server.crt
+    GnuTLSKeyFile /var/www/site-conf/wordpress.trustedhttp.org/server.key
+</VirtualHost>
+
+</IfModule>
