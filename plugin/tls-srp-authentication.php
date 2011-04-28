@@ -54,8 +54,10 @@ function tls_srp_wp_footer() {
     echo "<div style='position:absolute;text-align:right;top:0;right:0;width:220px;font-size:1.9em;font-weight:bold;line-height:150%;background-color:white;color:red;font-family:sans-serif;padding:7px;border:solid 3px red;'>@TLSUser(" . $tls_srp_user . ")<br>@WPUser(" . $wp_user . ")</div>";
 }
 
-function auth_redirect() {
-    tls_srp_authenticate(nul);
+if (!function_exists('auth_redirect')) {
+    function auth_redirect() {
+        tls_srp_authenticate(null);
+    }
 }
 
 
