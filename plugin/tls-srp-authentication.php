@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: TLS-SRP Authentication
-Plugin URI: http://trustedhttp.org/TLS-SRP_in_WordPress
+Plugin URI: http://trustedhttp.org/TLS-SRP_Authentication_in_WordPress
 Description: Use TLS-SRP authentication with WordPress.
 Version: 1.0
 Author: Quinn Slack
