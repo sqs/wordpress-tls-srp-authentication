@@ -27,6 +27,8 @@ License: GPLv2
 define('TLS_SRP_AUTH_ENV_VAR', 'SSL_SRP_USER');
 define('TLS_SRP_SHOW_DEBUG_INFO', true);
 
+define('TLS_SRP_PLUGIN_VERSION', '1.0');
+
 function tls_srp_authenticate($user) {
 
     $username = $_SERVER[TLS_SRP_AUTH_ENV_VAR];
